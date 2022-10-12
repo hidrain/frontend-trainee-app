@@ -1,9 +1,24 @@
 import React from 'react'
+import styled from 'styled-components'
+import { Spacer } from '../utils/spacer'
 
 type Props = {}
 
+const LabelWrapper = styled.div`
+    display: flex;
+`
+const StyledLabel = styled.div`
+    font-size: 24px;
+    font-weight: ${props => props.theme.weight.bold};
+    align-self: center;
+`
+
 export const Label = (props: Props) => {
     return (
-        <div>Label</div>
+        <LabelWrapper>
+            <Spacer width={24} />
+            <StyledLabel>Поиск</StyledLabel>
+        </LabelWrapper>
     )
 }
+
