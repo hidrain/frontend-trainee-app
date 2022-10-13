@@ -9,13 +9,13 @@ const initialState: UsersSliceState = {
 
 export const fetchUsers = () => {
     return axios.get(`https://stoplight.io/mocks/kode-frontend-team/koder-stoplight/86566464/users?__example=all`, 
-    { responseType: 'json' });
+        { responseType: 'json' });
 }
  
 export const catchUsers = createAsyncThunk<UserType[]>('users/fetchUsers', 
-async () => {
-    const data = await fetchUsers().then((res) => res.data);
-    return data.items;
+    async () => {
+        const data = await fetchUsers().then((res) => res.data);
+        return data.items;
 })
 
 

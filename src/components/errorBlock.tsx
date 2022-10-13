@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import magnifying_glass from '../assets/img/magnifying-glass.png'
+import flying_saucer from '../assets/img/flying-saucer.png'
 
 type Props = {}
 
@@ -37,12 +37,13 @@ const RegularText = styled.div`
       padding-top: 12px;
 `
 
-export const NotFoundBlock = (props: Props) => {
+export const ErrorBlock = (props: Props) => {
   return (
     <Wrapper>
-      <img src={magnifying_glass} alt='no results' />
-      <MainText>Мы никого не нашли</MainText>
-      <RegularText>Попробуй скорректировать запрос</RegularText>
+      <img src={flying_saucer} alt='error_image' />
+      <MainText>Какой-то сверхразум все сломал</MainText>
+      <RegularText>Постараемся быстро починить</RegularText>
+      <a href='/'>Попробовать снова</a>
     </Wrapper>
   )
 }
