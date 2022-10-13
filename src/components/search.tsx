@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import { SearchIcon, SortIcon } from '../assets/icons'
 import { Spacer } from '../utils/spacer'
@@ -16,7 +15,7 @@ const Input = styled.input`
     border-radius: 16px;
     background: #F7F7F8;
     padding-left: 44px;
-    caret-color: #6534FF;
+    caret-color: ${props => props.theme.colors.active_primary};
 
     ::placeholder {
         color: #C3C3C6;
@@ -40,7 +39,7 @@ const SortButton = styled.button`
     border: none;
 
     :hover svg path{
-        fill: #6534FF;
+        fill: ${props => props.theme.colors.active_primary};
     }
 `
 const Form = styled.form`
@@ -50,7 +49,7 @@ const Form = styled.form`
 
     :focus-within {
         ${SearchButton} svg path {
-        fill: #050510;
+        fill: ${props => props.theme.colors.primary};
     }
 }
 `

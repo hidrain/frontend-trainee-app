@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios'
+import { useEffect, useState } from 'react'
 import { UserBlock } from '../components'
-import { setUsers, catchUsers } from '../redux/users/slice'
+import { catchUsers } from '../redux/users/slice'
 import { Spacer } from '../utils/spacer'
 import { selectUsersData } from '../redux/users/selectors'
 import { useAppDispatch, useAppSelector } from '../redux/store'
+import { Skeleton } from '../components/userBlock/skeleton'
+import { UserType } from '../redux/users/types'
 
 
 type Props = {}
@@ -12,7 +13,7 @@ type Props = {}
 export const Main = (props: Props) => {
 
   const dispatch = useAppDispatch()
-  const users = useAppSelector(selectUsersData)
+  const { users, status } = useAppSelector(selectUsersData)
 
   const getUsers = () => {
     dispatch(catchUsers())
@@ -22,20 +23,15 @@ export const Main = (props: Props) => {
     getUsers()
   }, [])
 
+  const user = users.map((u: UserType) => <UserBlock key={u.id} {...u} />)
+  const skeletons = [...new Array(10)].map((_, index) => <div key={index}><Skeleton /></div>)
+
   return (
     <div>
-
       <ul>
         <Spacer height={22} />
-        {users.map((u: any) => {
-          return (
-            <div key={u.id}>
-              <UserBlock {...u} />
-            </div>
-          )
-        })}
+        {status === 'loading' ? skeletons : user}
       </ul>
-
     </div >
   )
 }

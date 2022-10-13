@@ -1,5 +1,5 @@
-import React from 'react'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 import { Spacer } from '../utils/spacer'
 
 type Props = {}
@@ -29,12 +29,12 @@ export const Tabs = (props: Props) => {
         <TabsWrapper>
             <Spacer width={16} />
             <nav>
-                <a href='/' >Все</a>
-                <a href='/designers'>Designers</a>
-                <a href='/analysts' >Analysts</a>
-                <a href='/managers'>Managers</a>
-                <a href='/ios'>iOS</a>
-                <a href='/android'>Android</a>
+                <Link to='/' >Все</Link>
+                <Link to='/designers'>Designers</Link>
+                <Link to='/analysts' >Analysts</Link>
+                <Link to='/managers'>Managers</Link>
+                <Link to='/ios'>iOS</Link>
+                <Link to='/android'>Android</Link>
             </nav>
         </TabsWrapper>
     )

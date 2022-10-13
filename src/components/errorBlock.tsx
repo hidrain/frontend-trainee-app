@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import flying_saucer from '../assets/img/flying-saucer.png'
 
@@ -16,25 +17,25 @@ const Wrapper = styled.div`
 
   & a {
     font-size: 16px;
-      font-weight: 600;
-      color: #6534FF;
-      text-decoration: none;
-      padding-top: 12px;
+    font-weight: 600;
+    color: #6534FF;
+    text-decoration: none;
+    padding-top: 12px;
   }
 `
 const MainText = styled.div`
   font-size: 17px;
-    font-weight: 700;
-    font-weight: ${props => props.theme.weight.bold};
-      padding-top:8px;
-      align-self: end;
+  font-weight: 700;
+  font-weight: ${props => props.theme.weight.bold};
+  padding-top:8px;
+  align-self: end;
 `
 const RegularText = styled.div`
   text-align: center;
-      font-size: 16px;
-      font-weight: ${props => props.theme.weight.normal};
-      color: ${props => props.theme.colors.tetriary};
-      padding-top: 12px;
+  font-size: 16px;
+  font-weight: ${props => props.theme.weight.normal};
+  color: ${props => props.theme.colors.tetriary};
+  padding-top: 12px;
 `
 
 export const ErrorBlock = (props: Props) => {
@@ -43,7 +44,7 @@ export const ErrorBlock = (props: Props) => {
       <img src={flying_saucer} alt='error_image' />
       <MainText>Какой-то сверхразум все сломал</MainText>
       <RegularText>Постараемся быстро починить</RegularText>
-      <a href='/'>Попробовать снова</a>
+      <Link to='/'>Попробовать снова</Link>
     </Wrapper>
   )
 }

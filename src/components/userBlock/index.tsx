@@ -1,7 +1,8 @@
-import React from 'react'
 import styled from 'styled-components'
-import { UserType } from '../redux/users/types'
-import { Spacer } from '../utils/spacer'
+import { Link } from 'react-router-dom'
+import { Spacer } from '../../utils/spacer'
+import { UserType } from '../../redux/users/types'
+import plugImg from '../../assets/img/plug.png'
 
 const UserBlockWrapper = styled.div`
     display: flex;
@@ -48,9 +49,9 @@ export const UserBlock = ({ id, avatarUrl, firstName, lastName,
         <div>
             <ul>
                 <UserLink>
-                    <a key={id} href={`/user/${id}`}>
+                    <Link key={id} to={`/user/${id}`}>
                         <UserBlockWrapper>
-                            <img src={avatarUrl} />
+                            <img src={avatarUrl ?? plugImg} />
                             <Spacer width={16} />
                             <UserInfoWrapper>
                                 <UserName>
@@ -65,7 +66,7 @@ export const UserBlock = ({ id, avatarUrl, firstName, lastName,
                             </UserInfoWrapper>
                         </UserBlockWrapper>
                         <Spacer height={12} />
-                    </a>
+                    </Link>
                 </UserLink>
             </ul>
         </div >

@@ -24,7 +24,7 @@ export const usersSlice = createSlice({
     initialState,
     reducers: {
         setUsers: (state, action: any) => {
-            state.users = action.payload
+            state.users = action.payload.users
         },
     },
     extraReducers: (builder) => {
