@@ -11,7 +11,7 @@ export type UserType = {
 
 export interface UsersSliceState {
     users: UserType[],
-    status: Status
+    status: Status,
 }
 
 export enum Status {

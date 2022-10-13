@@ -7,11 +7,15 @@ const Theme: DefaultTheme = {
     tetriary: '#97979B',
     active_primary: '#6534FF'
   },
-    weight: {
+  weight: {
     bold: '700',
     semibold: '600',
     medium: '500',
     normal: '400'
+  },
+  borderBottom: {
+    none: 'none',
+    active: '#6534FF'
   },
 };
 

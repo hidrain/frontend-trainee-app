@@ -1,9 +1,9 @@
-import React from 'react'
+import { UserProfileBlock } from '../components/userProfileBlock/userProfileBlock'
 
 type Props = {}
 
 export const UserProfile = (props: Props) => {
   return (
-    <div>UserProfile</div>
+    <UserProfileBlock />
   )
 }

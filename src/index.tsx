@@ -16,6 +16,7 @@ const Global = createGlobalStyle`
     font-size: 15px;
     font-weight: ${props => props.theme.weight.medium};
     color: ${props => props.theme.colors.primary};
+    border-bottom: ${props => props.theme.borderBottom.none};
   }
 `
 

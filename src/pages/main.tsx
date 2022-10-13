@@ -6,8 +6,7 @@ import { selectUsersData } from '../redux/users/selectors'
 import { useAppDispatch, useAppSelector } from '../redux/store'
 import { Skeleton } from '../components/userBlock/skeleton'
 import { UserType } from '../redux/users/types'
-import { selectSearchValue } from '../redux/filter/selectors'
-
+import { selectFilter } from '../redux/filter/selectors'
 
 type Props = {}
 
@@ -15,7 +14,7 @@ export const Main = (props: Props) => {
 
   const dispatch = useAppDispatch()
   const { users, status } = useAppSelector(selectUsersData)
-  const { searchValue } = useAppSelector(selectSearchValue)
+  const { searchValue } = useAppSelector(selectFilter)
 
   const getUsers = () => {
     dispatch(catchUsers())
@@ -25,7 +24,7 @@ export const Main = (props: Props) => {
     getUsers()
   }, [])
 
-  const user = users
+  const userList = users
     .filter((u: UserType) => {
       if (u.firstName.toLowerCase().includes(searchValue.toLowerCase()) ||
         u.lastName.toLowerCase().includes(searchValue.toLowerCase()) ||
@@ -43,7 +42,7 @@ export const Main = (props: Props) => {
     <div>
       <ul>
         <Spacer height={22} />
-        {status === 'loading' ? skeletons : user}
+        {status === 'loading' ? skeletons : userList}
       </ul>
     </div >
   )

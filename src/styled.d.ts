@@ -14,5 +14,9 @@ declare module 'styled-components' {
       medium: string;
       normal: string;
     };
+    borderBottom: {
+      none: string;
+      active: string;
+    };
   }
 }
