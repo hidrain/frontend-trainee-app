@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import { Header } from './components';
+import { Main } from './pages/main';
 
 const AppWrapper = styled.div`
   display: grid;
@@ -11,6 +12,7 @@ function App() {
   return (
     <AppWrapper>
       <Header />
+      <Main />
     </AppWrapper>
   );
 }

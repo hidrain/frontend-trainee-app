@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
+import { store } from './redux/store'
+import { Provider } from 'react-redux'
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { Theme } from './theme';
 
@@ -19,11 +21,14 @@ const Global = createGlobalStyle`
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
 root.render(
-  <ThemeProvider theme={Theme}>
-    <Global />
-    <App />
-  </ThemeProvider>
+  <Provider store={store}>
+    <ThemeProvider theme={Theme}>
+      <Global />
+      <App />
+    </ThemeProvider>
+  </Provider>
 );
 
 
