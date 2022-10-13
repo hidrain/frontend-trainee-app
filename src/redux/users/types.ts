@@ -11,4 +11,11 @@ export type UserType = {
 
 export interface UsersSliceState {
     users: UserType[],
+    status: Status
 }
+
+export enum Status {
+    LOADING = 'loading',
+    SUCCESS = 'completed',
+    ERROR = 'error',
+  }
