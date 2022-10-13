@@ -1,4 +1,4 @@
-import magnifying_glass from '../../assets/img/magnifying-glass.png'
+import magnifying_glass from '../../assets/img/magnifying_glass.png'
 import { MainText, RegularText, Wrapper } from './styles'
 
 type Props = {}

@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 import styled from 'styled-components'
-import { Header } from '../components'
+import { Header, Sort } from '../components'
 
 type Props = {}
 
@@ -25,6 +25,7 @@ export const Layout = (props: Props) => {
             </HeaderWrapper>
 
             <ContentWrapper>
+                <Sort />
                 <Outlet />
             </ContentWrapper>
         </AppWrapper>

@@ -1,11 +1,10 @@
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from './App';
 import { store } from './redux/store'
 import { Provider } from 'react-redux'
 import { BrowserRouter } from "react-router-dom";
 import { createGlobalStyle, ThemeProvider } from 'styled-components'
-import { Theme } from './theme';
+import { Theme } from './styles/theme';
 
 const Global = createGlobalStyle`
   * {
@@ -33,7 +32,6 @@ root.render(
       </ThemeProvider>
     </Provider>
   </BrowserRouter>
-
 );
 
 

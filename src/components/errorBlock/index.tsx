@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import flying_saucer from '../../assets/img/flying-saucer.png'
+import flying_saucer from '../../assets/img/flying_saucer.png'
 import { MainText, RegularText, Wrapper } from './styles'
 
 type Props = {}

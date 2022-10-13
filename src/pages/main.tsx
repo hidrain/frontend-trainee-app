@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '../redux/store'
 import { Skeleton } from '../components/userBlock/skeleton'
 import { UserType } from '../redux/users/types'
 import { selectFilter } from '../redux/filter/selectors'
+import { NotFound } from './notFound'
 
 type Props = {}
 
@@ -43,6 +44,7 @@ export const Main = (props: Props) => {
       <ul>
         <Spacer height={22} />
         {status === 'loading' ? skeletons : userList}
+        {status === 'completed' && userList.length === 0 ? <NotFound /> : null}
       </ul>
     </div >
   )
