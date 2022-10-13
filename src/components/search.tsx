@@ -1,5 +1,9 @@
+import { ChangeEvent, FormEvent } from 'react'
 import styled from 'styled-components'
 import { SearchIcon, SortIcon } from '../assets/icons'
+import { selectSearchValue } from '../redux/filter/selectors'
+import { setSearchValue } from '../redux/filter/slice'
+import { useAppDispatch, useAppSelector } from '../redux/store'
 import { Spacer } from '../utils/spacer'
 
 type Props = {}
@@ -55,18 +59,30 @@ const Form = styled.form`
 `
 
 export const Search = (props: Props) => {
+
+    const dispatch = useAppDispatch()
+    const { searchValue } = useAppSelector(selectSearchValue)
+
+    const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+    }
+    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+        dispatch(setSearchValue(e.target.value))
+    }
+
+
     return (
         <SearchWrapper>
             <Spacer width={16} />
             <Form
-                onSubmit={() => { }}
+                onSubmit={handleSubmit}
                 autoComplete='off'>
                 <Input
                     type='text'
                     name='search'
                     placeholder='Введи имя, тег, почту...'
-                    onChange={(e) => { }}
-                    value=''
+                    onChange={onChange}
+                    value={searchValue}
                 />
 
                 <SearchButton
