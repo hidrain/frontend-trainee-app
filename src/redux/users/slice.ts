@@ -31,6 +31,13 @@ export const usersSlice = createSlice({
         setUsers: (state, action: any) => {
             state.users = action.payload.users
         },
+        setSortUsersByName: (state, action: PayloadAction<any>) => {
+            const copyData = state.users.concat()
+            const sortData = copyData.sort((a, b) => {
+                return (a.firstName > b.firstName ? 1 : -1)
+            })
+            state.users = sortData
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(catchUsers.pending, (state) => {
@@ -49,5 +56,5 @@ export const usersSlice = createSlice({
     },
 });
 
-export const { setUsers } = usersSlice.actions
+export const { setUsers, setSortUsersByName } = usersSlice.actions
 export default usersSlice.reducer

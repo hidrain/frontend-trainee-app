@@ -3,7 +3,8 @@ import { FilterSliceState } from './types';
 
 const initialState: FilterSliceState = {
     searchValue: '',
-    department: 'all'
+    department: 'all', 
+    sortPopup: false,
 }
 
 export const filterSlice = createSlice({
@@ -16,8 +17,11 @@ export const filterSlice = createSlice({
       setDepartment: (state, action: PayloadAction<any>) => {
         state.department = action.payload
       },
+      setSortPopup: (state, action: PayloadAction<boolean>) => {
+        state.sortPopup = action.payload
+      },
     },
   });
   
-  export const { setSearchValue, setDepartment } = filterSlice.actions;
+  export const { setSearchValue, setDepartment, setSortPopup } = filterSlice.actions;
   export default filterSlice.reducer;

@@ -1,5 +1,9 @@
-import { useState } from "react"
 import { CloseIcon } from '../../assets/icons/close-icon'
+import { selectFilter } from "../../redux/filter/selectors"
+import { setSortPopup } from '../../redux/filter/slice'
+import { useAppDispatch, useAppSelector } from "../../redux/store"
+import { selectUsersData } from '../../redux/users/selectors'
+import { setSortUsersByName, setUsers } from '../../redux/users/slice'
 import { Spacer } from '../../utils/spacer'
 import { Button, HeaderWrapper, Name, Overlay, PopupContent, SortBlock, SortWrapper } from "./styles"
 
@@ -7,10 +11,18 @@ type Props = {}
 
 export const Sort = (props: Props) => {
 
-    const [sortPopup, setSortPopup] = useState(false)
+    const dispatch = useAppDispatch()
+    const { sortPopup } = useAppSelector(selectFilter)
+    const { users } = useAppSelector(selectUsersData)
 
     const togglePopup = () => {
-        setSortPopup(!sortPopup)
+        dispatch(setSortPopup(!sortPopup))
+    }
+
+    const sortUsersByName = () => {
+        dispatch(setSortUsersByName(users))
+        dispatch(setSortPopup(false))
+        console.log(users)
     }
 
     return (
@@ -30,7 +42,7 @@ export const Sort = (props: Props) => {
                             </HeaderWrapper>
                             <SortBlock>
                                 <input type="radio" name="abc" id="abc"
-                                // onClick={() => { sortUsersByAbc() }} 
+                                    onClick={() => { sortUsersByName() }}
                                 />
                                 <Spacer width={14} />
                                 <label htmlFor="abc">По алфавиту</label>

@@ -24,6 +24,7 @@ export const tabs = [
 export const Tabs = (props: Props) => {
 
     const dispatch = useAppDispatch()
+    const { department } = useAppSelector(selectFilter)
 
     const onChangeDepartment = (department: any) => {
         dispatch(setDepartment(department))
@@ -35,10 +36,11 @@ export const Tabs = (props: Props) => {
             <Spacer width={16} />
             <ButtonWrapper>
                 {
-                    tabs.map((tabName, index) => (
-                        <TabLink key={index}
+                    tabs.map((tabName, key) => (
+                        <TabLink
+                            key={key}
                             onClick={() => onChangeDepartment(tabName.key)}
-                        // className={value === index ? "active" : ''}
+                            isActive={department === tabName.key}
                         >
                             {tabName.value}
                         </TabLink>

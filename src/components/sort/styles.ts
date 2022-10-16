@@ -22,7 +22,7 @@ export const Overlay = styled.div`
 export const PopupContent = styled.div`
     display: grid;
     position: absolute;
-    grid-template-rows: 62px 60px 60px;
+    grid-template-rows: 42px 60px 60px 8px;
     width: 337px;
     top: 50%;
     left: 50%;
@@ -35,7 +35,7 @@ export const PopupContent = styled.div`
 `
 export const HeaderWrapper = styled.div`
     display: grid;
-    grid-template-columns: 4fr max-content;
+    grid-template-columns: 1fr min-content;
     align-content: start;
 `
 export const SortBlock = styled.div`

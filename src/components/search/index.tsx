@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent } from 'react'
 import { SearchIcon, SortIcon } from '../../assets/icons'
 import { selectFilter } from '../../redux/filter/selectors'
-import { setSearchValue } from '../../redux/filter/slice'
+import { setSearchValue, setSortPopup } from '../../redux/filter/slice'
 import { useAppDispatch, useAppSelector } from '../../redux/store'
 import { Spacer } from '../../utils/spacer'
 import { Form, Input, SearchButton, SearchWrapper, SortButton } from './styles'
@@ -11,13 +11,16 @@ type Props = {}
 export const Search = (props: Props) => {
 
     const dispatch = useAppDispatch()
-    const { searchValue } = useAppSelector(selectFilter)
+    const { searchValue, sortPopup } = useAppSelector(selectFilter)
 
     const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault()
     }
     const onChange = (e: ChangeEvent<HTMLInputElement>) => {
         dispatch(setSearchValue(e.target.value))
+    }
+    const onClickOpenSort = () => {
+        dispatch(setSortPopup(!sortPopup))
     }
 
 
@@ -41,7 +44,7 @@ export const Search = (props: Props) => {
                 </SearchButton>
 
                 <SortButton
-                    onClick={() => { }}>
+                    onClick={onClickOpenSort}>
                     <SortIcon />
                 </SortButton>
 
