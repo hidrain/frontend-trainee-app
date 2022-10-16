@@ -31,10 +31,17 @@ export const usersSlice = createSlice({
         setUsers: (state, action: any) => {
             state.users = action.payload.users
         },
-        setSortUsersByName: (state, action: PayloadAction<any>) => {
+        setSortUsersByName: (state) => {
             const copyData = state.users.concat()
             const sortData = copyData.sort((a, b) => {
                 return (a.firstName > b.firstName ? 1 : -1)
+            })
+            state.users = sortData
+        },
+        setSortUsersByDate: (state) => {
+            const copyData = state.users.concat()
+            const sortData = copyData.sort((a, b) => {
+                return (a.birthday > b.birthday ? 1 : -1)
             })
             state.users = sortData
         },
@@ -56,5 +63,5 @@ export const usersSlice = createSlice({
     },
 });
 
-export const { setUsers, setSortUsersByName } = usersSlice.actions
+export const { setUsers, setSortUsersByName, setSortUsersByDate } = usersSlice.actions
 export default usersSlice.reducer

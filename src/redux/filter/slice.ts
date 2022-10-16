@@ -5,6 +5,7 @@ const initialState: FilterSliceState = {
     searchValue: '',
     department: 'all', 
     sortPopup: false,
+    dateOfBrthday: false,
 }
 
 export const filterSlice = createSlice({
@@ -20,8 +21,11 @@ export const filterSlice = createSlice({
       setSortPopup: (state, action: PayloadAction<boolean>) => {
         state.sortPopup = action.payload
       },
+      setSort: (state, action: PayloadAction<boolean>) => {
+        state.dateOfBrthday = action.payload
+      },
     },
   });
   
-  export const { setSearchValue, setDepartment, setSortPopup } = filterSlice.actions;
+  export const { setSearchValue, setDepartment, setSortPopup, setSort } = filterSlice.actions;
   export default filterSlice.reducer;

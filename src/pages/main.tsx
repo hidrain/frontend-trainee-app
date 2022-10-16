@@ -15,7 +15,7 @@ export const Main = (props: Props) => {
 
   const dispatch = useAppDispatch()
   const { users, status } = useAppSelector(selectUsersData)
-  const { searchValue, department } = useAppSelector(selectFilter)
+  const { searchValue, department, dateOfBrthday } = useAppSelector(selectFilter)
 
   const getUsers = () => {
     const params = { department }
@@ -24,7 +24,7 @@ export const Main = (props: Props) => {
 
   useEffect(() => {
     getUsers()
-  }, [department])
+  }, [department, searchValue, dateOfBrthday])
 
   const userList = users
     .filter((u: UserType) => {

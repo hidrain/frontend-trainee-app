@@ -1,4 +1,4 @@
-import { UserProfileBlock } from '../components/userProfileBlock/userProfileBlock'
+import { UserProfileBlock } from '../components/userProfileBlock'
 
 type Props = {}
 

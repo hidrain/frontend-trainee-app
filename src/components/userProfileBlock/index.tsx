@@ -1,21 +1,24 @@
+import axios from 'axios'
+import { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ArrowIcon, PhoneIcon, StarIcon } from '../../assets/icons'
 import { useAppSelector } from '../../redux/store'
 import { selectUsersData } from '../../redux/users/selectors'
 import { declOfNum } from '../../utils/declOfNum'
 import { Spacer } from '../../utils/spacer'
-import { Age, Avatar, ButtomItem, ButtomWrapper, Departament, GoBackButton, InfoWrapper, Name, ProfileWrapper, TopWrapper, UserInfo, UserTag } from './style'
+import {
+    Age, Avatar, ButtomItem, ButtomWrapper, Departament, GoBackButton,
+    InfoWrapper, Name, ProfileWrapper, TopWrapper, UserInfo, UserTag
+} from './style'
 
 type Props = {}
 
 export const UserProfileBlock = (props: Props) => {
 
     const { users } = useAppSelector(selectUsersData)
-
     const { id } = useParams()
     const navigate = useNavigate()
     const goBack = () => navigate(-1)
-
     const user = users.find(u => u.id === id)
 
     //GET AGE
@@ -90,3 +93,4 @@ export const UserProfileBlock = (props: Props) => {
         </div >
     )
 }
+

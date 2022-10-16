@@ -26,7 +26,7 @@ export const Tabs = (props: Props) => {
     const dispatch = useAppDispatch()
     const { department } = useAppSelector(selectFilter)
 
-    const onChangeDepartment = (department: any) => {
+    const onChangeDepartment = (department: string) => {
         dispatch(setDepartment(department))
         console.log(department)
     }

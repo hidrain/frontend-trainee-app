@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
 export const UserBlockWrapper = styled.div`
-    display: flex;
+    display: grid;
+    grid-template-columns: max-content 16px max-content 1fr;
     align-items: center;
 
     & img {
@@ -36,4 +37,10 @@ export const UserLink = styled.div`
     & a, :active, :hover {
     text-decoration: none;
     }
+`
+export const UserBirthday = styled.div`
+    justify-self: end;
+    font-weight: ${props => props.theme.weight.normal};
+    color: ${props => props.theme.colors.secondary};
+    line-height: 20px;
 `

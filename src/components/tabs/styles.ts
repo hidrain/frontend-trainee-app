@@ -7,7 +7,6 @@ export const TabsWrapper = styled.div`
 export const ButtonWrapper = styled.nav`
     display: grid;
     grid-template-columns: repeat(13, max-content);
-    overflow: auto;
     padding-top: 12px;
     font-weight: 500;
 `

@@ -4,4 +4,5 @@ export interface FilterSliceState {
     'qa' | 'back_office' | 'frontend' | 'hr' | 'pr' | 'backend' | 
     'support' | 'analytics';
     sortPopup: boolean;
+    dateOfBrthday: boolean;
 }
