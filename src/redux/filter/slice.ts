@@ -3,6 +3,7 @@ import { FilterSliceState } from './types';
 
 const initialState: FilterSliceState = {
     searchValue: '',
+    department: 'all'
 }
 
 export const filterSlice = createSlice({
@@ -12,8 +13,11 @@ export const filterSlice = createSlice({
       setSearchValue(state, action: PayloadAction<string>) {
         state.searchValue = action.payload;
       },
+      setDepartment: (state, action: PayloadAction<any>) => {
+        state.department = action.payload
+      },
     },
   });
   
-  export const { setSearchValue } = filterSlice.actions;
+  export const { setSearchValue, setDepartment } = filterSlice.actions;
   export default filterSlice.reducer;

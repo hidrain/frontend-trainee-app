@@ -15,15 +15,16 @@ export const Main = (props: Props) => {
 
   const dispatch = useAppDispatch()
   const { users, status } = useAppSelector(selectUsersData)
-  const { searchValue } = useAppSelector(selectFilter)
+  const { searchValue, department } = useAppSelector(selectFilter)
 
   const getUsers = () => {
-    dispatch(catchUsers())
+    const params = { department }
+    dispatch(catchUsers(params))
   }
 
   useEffect(() => {
     getUsers()
-  }, [])
+  }, [department])
 
   const userList = users
     .filter((u: UserType) => {
