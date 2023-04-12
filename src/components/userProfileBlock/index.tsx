@@ -1,15 +1,23 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
+// import { createAsyncThunk } from '@reduxjs/toolkit'
+import { useEffect } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { ArrowIcon, PhoneIcon, StarIcon } from '../../assets/icons'
+// import { selectFilter } from '../../redux/filter/selectors'
 import { useAppSelector } from '../../redux/store'
 import { selectUsersData } from '../../redux/users/selectors'
+// import { catchUsers, fetchUsers } from '../../redux/users/slice'
+// import { FetchProps } from '../../redux/users/types'
 import { declOfNum } from '../../utils/declOfNum'
 import { Spacer } from '../../utils/spacer'
 import {
     Age, Avatar, ButtomItem, ButtomWrapper, Departament, GoBackButton,
     InfoWrapper, Name, ProfileWrapper, TopWrapper, UserInfo, UserTag
 } from './style'
+import { format, parseISO, differenceInYears } from 'date-fns'
+import { ru } from 'date-fns/locale'
+import plugImg from '../../assets/img/plug.png'
+
 
 type Props = {}
 
@@ -19,25 +27,24 @@ export const UserProfileBlock = (props: Props) => {
     const { id } = useParams()
     const navigate = useNavigate()
     const goBack = () => navigate(-1)
+
+    // const dispatch = useAppDispatch();
+    // const { department } = useAppSelector(selectFilter)
+    // useEffect(() => {
+    //     catchUsers({ department })
+    // }, [dispatch])
+
+
     const user = users.find(u => u.id === id)
 
-    //GET AGE
-    const now = new Date()
-    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
-    const dob = new Date(user!.birthday)
-    const dobnow = new Date(today.getFullYear(), dob.getMonth(), dob.getDate())
-    let age = today.getFullYear() - dob.getFullYear()
-    if (today < dobnow) {
-        age = age - 1
-    }
-
     //GET FORMAT BIRTHDAY
-    const getMonthDay = (dob: any) => {
-        let months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
-            'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря']
-        return months[dob.getMonth()];
-    }
-    const birthDay = dob.getDate() + ' ' + getMonthDay(dob) + ' ' + dob.getFullYear()
+    const date = user!.birthday
+    const birthDay = format(parseISO(date), "d MMMM yyyy", { locale: ru })
+
+    //GET AGE
+    const dob = new Date(date);
+    const now = new Date();
+    const age = differenceInYears(now, dob);
 
     //GET PHONE NUMBER
     const phoneNumber = 'tel:' + user?.phone;
@@ -52,7 +59,9 @@ export const UserProfileBlock = (props: Props) => {
                         <Spacer width={24} />
                         <ArrowIcon />
                     </GoBackButton>
-                    <Avatar src={user.avatarUrl} />
+                    {/* <Avatar src={user.avatarUrl} /> */}
+                    <Avatar src={plugImg} />
+
 
                     <InfoWrapper>
                         <UserInfo>

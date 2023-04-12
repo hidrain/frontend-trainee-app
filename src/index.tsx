@@ -24,7 +24,7 @@ const root = ReactDOM.createRoot(
 );
 
 root.render(
-  <BrowserRouter>
+  <BrowserRouter basename='/frontend-trainee-app'>
     <Provider store={store}>
       <ThemeProvider theme={Theme}>
         <Global />

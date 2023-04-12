@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { UserBlock } from '../components'
 import { catchUsers } from '../redux/users/slice'
 import { Spacer } from '../utils/spacer'
@@ -24,7 +24,7 @@ export const Main = (props: Props) => {
 
   useEffect(() => {
     getUsers()
-  }, [department, searchValue, dateOfBrthday])
+  }, [department, searchValue])
 
   const userList = users
     .filter((u: UserType) => {

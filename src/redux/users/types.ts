@@ -19,3 +19,7 @@ export enum Status {
     SUCCESS = 'completed',
     ERROR = 'error',
 }
+
+export type FetchProps = {
+    department: string
+}

@@ -8,19 +8,17 @@ import {
 } from './styles'
 import { useAppSelector } from '../../redux/store'
 import { selectFilter } from '../../redux/filter/selectors'
+import { format, parseISO } from 'date-fns'
+import { ru } from 'date-fns/locale'
+
+
 
 export const UserBlock = ({ id, avatarUrl, firstName, lastName,
     userTag, department, birthday }: UserType) => {
 
     const { dateOfBrthday } = useAppSelector(selectFilter)
 
-    const dob = new Date(birthday)
-    const getShortMonthDay = (dob: any) => {
-        let months = ['янв', 'фев', 'мар', 'апр', 'мая', 'июн',
-            'июл', 'авг', 'сен', 'окт', 'ноя', 'дек']
-        return months[dob.getMonth()];
-    }
-    const shortBirthDay = dob.getDate() + ' ' + getShortMonthDay(dob)
+    const date = format(parseISO(birthday), "d MMMM", { locale: ru })
 
     return (
         <div>
@@ -28,7 +26,8 @@ export const UserBlock = ({ id, avatarUrl, firstName, lastName,
                 <UserLink>
                     <Link key={id} to={`/user/${id}`}>
                         <UserBlockWrapper>
-                            <img src={avatarUrl ?? plugImg} />
+                            {/* <img src={avatarUrl ?? plugImg} alt='avatar' /> */}
+                            <img src={plugImg} alt='avatar' />
                             <Spacer width={16} />
                             <UserInfoWrapper>
                                 <UserName>
@@ -43,7 +42,7 @@ export const UserBlock = ({ id, avatarUrl, firstName, lastName,
                             </UserInfoWrapper>
                             {dateOfBrthday &&
                                 <UserBirthday>
-                                    {shortBirthDay}
+                                    {date}
                                 </UserBirthday>
                             }
                         </UserBlockWrapper>
