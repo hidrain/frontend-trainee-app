@@ -3,6 +3,11 @@ import styled from "styled-components"
 export const TabsWrapper = styled.div`
     display: flex;
     overflow: scroll;
+    
+    &::-webkit-scrollbar {
+    display: none;
+  }
+
 `
 export const ButtonWrapper = styled.nav`
     display: grid;
