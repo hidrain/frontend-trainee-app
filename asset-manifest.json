@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.js": "/frontend-trainee-app/static/js/main.6930bbc5.js",
+    "main.js": "/frontend-trainee-app/static/js/main.b5a5380c.js",
     "static/media/plug.png": "/frontend-trainee-app/static/media/plug.5513f4e58370ab638772.png",
     "static/media/flying_saucer.png": "/frontend-trainee-app/static/media/flying_saucer.5eef3d04e32174513032.png",
     "index.html": "/frontend-trainee-app/index.html",
-    "main.6930bbc5.js.map": "/frontend-trainee-app/static/js/main.6930bbc5.js.map"
+    "main.b5a5380c.js.map": "/frontend-trainee-app/static/js/main.b5a5380c.js.map"
   },
   "entrypoints": [
-    "static/js/main.6930bbc5.js"
+    "static/js/main.b5a5380c.js"
   ]
 }
