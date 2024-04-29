@@ -21,5 +21,5 @@ export enum Status {
 }
 
 export type FetchProps = {
-    department: string
+    department: string;
 }

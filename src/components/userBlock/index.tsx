@@ -20,36 +20,34 @@ export const UserBlock = ({ id, avatarUrl, firstName, lastName,
 
     const date = format(parseISO(birthday), "d MMMM", { locale: ru })
 
+    console.log(birthday)
+
     return (
-        <div>
-            <ul>
-                <UserLink>
-                    <Link key={id} to={`/user/${id}`}>
-                        <UserBlockWrapper>
-                            {/* <img src={avatarUrl ?? plugImg} alt='avatar' /> */}
-                            <img src={plugImg} alt='avatar' />
-                            <Spacer width={16} />
-                            <UserInfoWrapper>
-                                <UserName>
-                                    {firstName + ' ' + lastName}
-                                </UserName>
-                                <UserTag>
-                                    {userTag.toLowerCase()}
-                                </UserTag>
-                                <UserDepartment>
-                                    {department}
-                                </UserDepartment>
-                            </UserInfoWrapper>
-                            {dateOfBrthday &&
-                                <UserBirthday>
-                                    {date}
-                                </UserBirthday>
-                            }
-                        </UserBlockWrapper>
-                        <Spacer height={12} />
-                    </Link>
-                </UserLink>
-            </ul>
-        </div >
+        <UserLink>
+            <Link key={id} to={`/user/${id}`}>
+                <UserBlockWrapper>
+                    {/* <img src={avatarUrl ?? plugImg} alt='avatar' /> */}
+                    <img src={plugImg} alt='avatar' />
+                    <Spacer width={16} />
+                    <UserInfoWrapper>
+                        <UserName>
+                            {firstName + ' ' + lastName}
+                        </UserName>
+                        <UserTag>
+                            {userTag.toLowerCase()}
+                        </UserTag>
+                        <UserDepartment>
+                            {department}
+                        </UserDepartment>
+                    </UserInfoWrapper>
+                    {dateOfBrthday &&
+                        <UserBirthday>
+                            {date}
+                        </UserBirthday>
+                    }
+                </UserBlockWrapper>
+                <Spacer height={12} />
+            </Link>
+        </UserLink>
     )
 }

@@ -1,13 +1,8 @@
-// import { useEffect, useState } from 'react'
-// import { createAsyncThunk } from '@reduxjs/toolkit'
-import { useEffect } from 'react'
+
 import { useNavigate, useParams } from 'react-router-dom'
 import { ArrowIcon, PhoneIcon, StarIcon } from '../../assets/icons'
-// import { selectFilter } from '../../redux/filter/selectors'
 import { useAppSelector } from '../../redux/store'
 import { selectUsersData } from '../../redux/users/selectors'
-// import { catchUsers, fetchUsers } from '../../redux/users/slice'
-// import { FetchProps } from '../../redux/users/types'
 import { declOfNum } from '../../utils/declOfNum'
 import { Spacer } from '../../utils/spacer'
 import {
@@ -18,7 +13,6 @@ import { format, parseISO, differenceInYears } from 'date-fns'
 import { ru } from 'date-fns/locale'
 import plugImg from '../../assets/img/plug.png'
 
-
 type Props = {}
 
 export const UserProfileBlock = (props: Props) => {
@@ -28,26 +22,32 @@ export const UserProfileBlock = (props: Props) => {
     const navigate = useNavigate()
     const goBack = () => navigate(-1)
 
-    // const dispatch = useAppDispatch();
-    // const { department } = useAppSelector(selectFilter)
-    // useEffect(() => {
-    //     catchUsers({ department })
-    // }, [dispatch])
+    const user = users ? users?.find((u) => u.id === id) : '';
+    console.log(users)
 
-
-    const user = users.find(u => u.id === id)
+    let birthday: string = '';
+    let phoneNumber: string = '';
+    let age: number = 0;
 
     //GET FORMAT BIRTHDAY
-    const date = user!.birthday
-    const birthDay = format(parseISO(date), "d MMMM yyyy", { locale: ru })
+    // const date = user!.birthday
+    // const birthDay = format(parseISO(date), "d MMMM yyyy", { locale: ru })
 
     //GET AGE
-    const dob = new Date(date);
-    const now = new Date();
-    const age = differenceInYears(now, dob);
+    // const dob = new Date(date);
+    // const now = new Date();
+    // const age = differenceInYears(now, dob);
 
     //GET PHONE NUMBER
-    const phoneNumber = 'tel:' + user?.phone;
+    // const phoneNumber = 'tel:' + user?.phone;
+
+    if (user) {
+        birthday = format(parseISO(user.birthday), "d MMMM yyyy", { locale: ru });
+        phoneNumber = 'tel:' + user.phone;
+        const dob = new Date(user.birthday);
+        const now = new Date();
+        age = differenceInYears(now, dob);
+    }
 
     return (
         <div>
@@ -86,7 +86,7 @@ export const UserProfileBlock = (props: Props) => {
                         <ButtomItem>
                             <StarIcon />
                             <Spacer width={12} />
-                            {birthDay}
+                            {birthday}
                         </ButtomItem>
                         <ButtomItem>
                             <PhoneIcon />
