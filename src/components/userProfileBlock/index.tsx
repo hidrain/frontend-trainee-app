@@ -23,7 +23,6 @@ export const UserProfileBlock = (props: Props) => {
     const goBack = () => navigate(-1)
 
     const user = users ? users?.find((u) => u.id === id) : '';
-    console.log(users)
 
     let birthday: string = '';
     let phoneNumber: string = '';
@@ -59,8 +58,8 @@ export const UserProfileBlock = (props: Props) => {
                         <Spacer width={24} />
                         <ArrowIcon />
                     </GoBackButton>
-                    {/* <Avatar src={user.avatarUrl} /> */}
-                    <Avatar src={plugImg} />
+                    <Avatar src={user.avatarUrl} />
+                    {/* <Avatar src={plugImg} /> */}
 
 
                     <InfoWrapper>

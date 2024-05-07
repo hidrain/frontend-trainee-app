@@ -26,8 +26,8 @@ export const UserBlock = ({ id, avatarUrl, firstName, lastName,
         <UserLink>
             <Link key={id} to={`/user/${id}`}>
                 <UserBlockWrapper>
-                    {/* <img src={avatarUrl ?? plugImg} alt='avatar' /> */}
-                    <img src={plugImg} alt='avatar' />
+                    <img src={avatarUrl ?? plugImg} alt='avatar' />
+                    {/* <img src={plugImg} alt='avatar' /> */}
                     <Spacer width={16} />
                     <UserInfoWrapper>
                         <UserName>

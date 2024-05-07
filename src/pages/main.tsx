@@ -42,28 +42,27 @@ export const Main = (props: Props) => {
 
   const skeletons = [...new Array(10)].map((_, index) => <div key={index}><Skeleton /></div>)
 
-
-  const userThisYear = userList.filter(user => {
-    const dayOfBirth = format(parseISO(user.props.birthday), "dd")
-    const monthOfBirth = format(parseISO(user.props.birthday), "MM")
-
+  const findUsersByPeriod = () => {
     const thisDay = format(new Date(), "dd")
     const thisMonth = format(new Date(), "MM")
 
-    const usersThisPeriod = monthOfBirth <= '12' && `${monthOfBirth}-${dayOfBirth}` >= `${thisMonth}-${thisDay}`
-    return usersThisPeriod
-  })
+    const userThisYear = userList.filter(user => {
+      const dayOfBirth = format(parseISO(user.props.birthday), "dd")
+      const monthOfBirth = format(parseISO(user.props.birthday), "MM")
+      const usersThisPeriod = monthOfBirth <= '12' && `${monthOfBirth}-${dayOfBirth}` >= `${thisMonth}-${thisDay}`
+      return usersThisPeriod
+    })
 
-  const userNextYear = userList.filter(user => {
-    const dayOfBirth = format(parseISO(user.props.birthday), "dd")
-    const monthOfBirth = format(parseISO(user.props.birthday), "MM")
+    const usersNextYear = userList.filter(user => {
+      const dayOfBirth = format(parseISO(user.props.birthday), "dd")
+      const monthOfBirth = format(parseISO(user.props.birthday), "MM")
+      const usersNextPeriod = monthOfBirth >= '01' && `${monthOfBirth}-${dayOfBirth}` < `${thisMonth}-${thisDay}`
+      return usersNextPeriod
+    })
 
-    const thisDay = format(new Date(), "dd")
-    const thisMonth = format(new Date(), "MM")
-
-    const usersNextPeriod = monthOfBirth >= '01' && `${monthOfBirth}-${dayOfBirth}` < `${thisMonth}-${thisDay}`
-    return usersNextPeriod
-  })
+    return [userThisYear, usersNextYear]
+  }
+  const [userThisYear, usersNextYear] = findUsersByPeriod()
 
   return (
     <div>
@@ -72,8 +71,8 @@ export const Main = (props: Props) => {
         {status === 'loading' ? skeletons : (
           dateOfBrthday ? (<>
             {userThisYear}
-            {(userThisYear[0] && userNextYear[0]) && <YearDivider />}
-            {userNextYear}
+            {(userThisYear[0] && usersNextYear[0]) && <YearDivider />}
+            {usersNextYear}
           </>) : userList
         )}
         {status === 'completed' && userList.length === 0 ? <NotFound /> : null}
